@@ -1,11 +1,14 @@
 import withAppProviders from './withAppProviders';
-import TeamData from './pages/TeamData';
+import Market from './pages/Market';
 
 function App() {
   return (
     <div className="mx-auto mb-8" style={{ width: '90%' }}>
       {/* <GeneralData /> */}
-      <TeamData />
+      {/* <TeamData /> */}
+      {/* <IdeaBusinessModel /> */}
+      {/* <ProductMarket /> */}
+      <Market />
       {/* <StepForms /> */}
     </div>
   );

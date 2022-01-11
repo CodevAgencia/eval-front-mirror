@@ -9,3 +9,9 @@ export const top100Films = [
   { label: 'The Godfather: Part II', year: 1974 },
   { label: 'The Dark Knight', year: 2008 },
 ];
+
+export const ValueProposal = [
+  { label: 'Definitivamente NO', year: 1994 },
+  { label: 'No mucho', year: 1972 },
+  { label: 'De acuerdo', year: 1974 },
+];
