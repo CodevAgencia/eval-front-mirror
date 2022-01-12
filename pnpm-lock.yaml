@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@babel/core': 7.14.5
   '@babel/node': 7.14.5
+  '@babel/plugin-proposal-private-property-in-object': ^7.16.7
   '@babel/plugin-syntax-flow': ^7.16.7
   '@babel/plugin-transform-react-jsx': ^7.16.7
   '@babel/preset-env': 7.14.5
@@ -18,7 +19,7 @@ specifiers:
   '@mui/lab': ^5.0.0-alpha.63
   '@mui/material': ^5.2.7
   '@mui/styles': ^5.2.2
-  '@reduxjs/toolkit': ^1.6.2
+  '@reduxjs/toolkit': ^1.7.1
   '@testing-library/dom': ^8.11.1
   '@testing-library/jest-dom': ^5.16.1
   '@testing-library/react': ^12.1.2
@@ -46,6 +47,7 @@ specifiers:
   lodash: ^4.17.21
   object-to-formdata: ^4.2.2
   postcss: ^7
+  postcss-flexbugs-fixes: ^5.0.2
   prettier: ^2.3.2
   prop-types: ^15.7.2
   react: ^17.0.2
@@ -55,6 +57,7 @@ specifiers:
   react-router: ^5.2.0
   react-router-dom: ^5.2.0
   react-scripts: 5.0.0
+  redux: ^4.1.2
   redux-logger: ^3.0.6
   source-map-explorer: 2.5.2
   tailwindcss: npm:@tailwindcss/postcss7-compat@^2.2.17
@@ -85,6 +88,7 @@ dependencies:
   history: 5.2.0
   lodash: 4.17.21
   object-to-formdata: 4.4.1
+  postcss-flexbugs-fixes: 5.0.2_postcss@7.0.39
   prop-types: 15.8.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -93,6 +97,7 @@ dependencies:
   react-router: 5.2.1_react@17.0.2
   react-router-dom: 5.3.0_react@17.0.2
   react-scripts: 5.0.0_c1fa7819cd1651425049451e05fd23d3
+  redux: 4.1.2
   redux-logger: 3.0.6
   web-vitals: 2.1.2
   yup: 0.32.11
@@ -100,6 +105,7 @@ dependencies:
 devDependencies:
   '@babel/core': 7.14.5
   '@babel/node': 7.14.5_@babel+core@7.14.5
+  '@babel/plugin-proposal-private-property-in-object': 7.16.7_@babel+core@7.14.5
   '@babel/plugin-syntax-flow': 7.16.7_@babel+core@7.14.5
   '@babel/plugin-transform-react-jsx': 7.16.7_@babel+core@7.14.5
   '@babel/preset-env': 7.14.5_@babel+core@7.14.5
@@ -9303,6 +9309,14 @@ packages:
     dependencies:
       postcss: 8.4.5
       postcss-value-parser: 4.2.0
+    dev: false
+
+  /postcss-flexbugs-fixes/5.0.2_postcss@7.0.39:
+    resolution: {integrity: sha512-18f9voByak7bTktR2QgDveglpn9DTbBWPUzSOe9g0N4WR/2eSt6Vrcbf0hmspvMI6YWGywz6B9f7jzpFNJJgnQ==}
+    peerDependencies:
+      postcss: ^8.1.4
+    dependencies:
+      postcss: 7.0.39
     dev: false
 
   /postcss-flexbugs-fixes/5.0.2_postcss@8.4.5:

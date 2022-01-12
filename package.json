@@ -15,7 +15,7 @@
     "@mui/lab": "^5.0.0-alpha.63",
     "@mui/material": "^5.2.7",
     "@mui/styles": "^5.2.2",
-    "@reduxjs/toolkit": "^1.6.2",
+    "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -25,6 +25,7 @@
     "history": "^5.1.0",
     "lodash": "^4.17.21",
     "object-to-formdata": "^4.2.2",
+    "postcss-flexbugs-fixes": "^5.0.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -33,6 +34,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.0",
+    "redux": "^4.1.2",
     "redux-logger": "^3.0.6",
     "web-vitals": "^2.1.2",
     "yup": "^0.32.11"
@@ -64,6 +66,7 @@
   "devDependencies": {
     "@babel/core": "7.14.5",
     "@babel/node": "7.14.5",
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "@babel/plugin-syntax-flow": "^7.16.7",
     "@babel/plugin-transform-react-jsx": "^7.16.7",
     "@babel/preset-env": "7.14.5",
