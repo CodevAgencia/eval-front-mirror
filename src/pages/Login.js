@@ -1,22 +1,18 @@
-import {
-  FormControl,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  TextField,
-} from '@mui/material';
+import { IconButton, InputAdornment, TextField } from '@mui/material';
 import { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import useForm from '../hooks/useForm';
+import { validacionLogin } from '../utils/validations/loginValidates';
+
+const initialData = {
+  email: '',
+  password: '',
+};
 
 const Login = () => {
   const [values, setValues] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
-
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -24,6 +20,16 @@ const Login = () => {
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
+  };
+
+  const { errors, form, handleChange, handleSubmit, setErrors, setForm, setInForm } = useForm(
+    initialData,
+    () => handleSubmitLogin(),
+    validacionLogin
+  );
+
+  const handleSubmitLogin = () => {
+    console.log(form);
   };
 
   return (
@@ -40,49 +46,53 @@ const Login = () => {
           <TextField
             id="email"
             label="Correo"
-            // error={!!errors.name}
-            // helperText={errors.name?.message}
+            error={!!errors.email}
+            helperText={errors.email}
             name="email"
             type="email"
-            value={values.email}
+            value={form.email}
             variant="outlined"
             className="w-full"
             placeholder="email..."
-            onChange={handleChange('email')}
+            onChange={handleChange}
           />
         </div>
 
-        <FormControl className="w-full" variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={showPassword ? 'text' : 'password'}
-            value={values.password}
-            onChange={handleChange('password')}
-            className="w-full"
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
+        <div className="w-full">
+          <TextField
+            id="password"
             label="Password"
+            error={!!errors.password}
+            helperText={errors.password}
+            name="password"
+            type={showPassword ? 'text' : 'password'}
+            value={form.password}
+            variant="outlined"
+            className="w-full"
+            placeholder="password..."
+            onChange={handleChange}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
-        </FormControl>
+        </div>
 
         <div>
           <button
             type="button"
             className="w-full bg-teal-300 hover:bg-teal-500 text-white font-bold py-4 px-4 rounded"
-            onClick={() => {
-              console.log({ values });
-            }}
+            onClick={handleSubmit}
           >
             Ingresar
           </button>

@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
+import jwtService from '../services/jwtService/jwtService';
 
 const useLogin = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  const token = localStorage.getItem('@emprendedor');
+  const token = jwtService.getAccessToken();
 
   useEffect(() => {
     if (token) {
