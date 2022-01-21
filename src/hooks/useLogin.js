@@ -11,7 +11,8 @@ const useLogin = () => {
     } else {
       setIsLoggedIn(false);
     }
-  }, [token]);
+    // console.log({ token });
+  });
 
   return { isLoggedIn };
 };

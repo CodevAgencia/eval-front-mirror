@@ -15,6 +15,7 @@ const FoundersInvolved = () => {
                 options={top100Films}
                 getOptionLabel={(option) => option.label}
                 sx={{ width: '100%' }}
+                size="small"
                 renderInput={(params) => <TextField {...params} label="Fundadores involucrados" />}
               />
             </div>

@@ -4,10 +4,12 @@ const SharedAutoComplete = ({ id, Data, placeLabel, handle, keyData }) => {
   return (
     <Autocomplete
       disablePortal
-      id={id}
+      id={id.toString()}
       options={Data}
       getOptionLabel={(option) => option.label || option.value}
       sx={{ width: '100%' }}
+      size="small"
+      // value=""
       renderInput={(params) => <TextField {...params} label={placeLabel} />}
       onChange={(event, value) => handle(event, value, keyData)}
     />

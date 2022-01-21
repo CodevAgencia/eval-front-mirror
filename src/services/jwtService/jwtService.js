@@ -1,7 +1,6 @@
-import FuseUtils from '@fuse/utils/FuseUtils';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import { Axios } from '../apiService/apiService';
+import FuseUtils from '../../utils/EventEmiterUtils';
 /* eslint-disable camelcase */
 
 class JwtService extends FuseUtils.EventEmitter {
@@ -132,10 +131,10 @@ class JwtService extends FuseUtils.EventEmitter {
   setSession = (access_token) => {
     if (access_token) {
       localStorage.setItem('@emprendedor_admin:access_token', access_token);
-      Axios.defaults.headers.common.Authorization = `Bearer ${access_token}`;
+      // Axios.defaults.headers.common.Authorization = `Bearer ${access_token}`;
     } else {
       localStorage.removeItem('@emprendedor_admin:access_token');
-      delete Axios.defaults.headers.common.Authorization;
+      // delete Axios.defaults.headers.common.Authorization;
     }
   };
 

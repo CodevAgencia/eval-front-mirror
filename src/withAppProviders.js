@@ -11,7 +11,10 @@ const withAppProviders = (Component) => (props) => {
     <AppContext.Provider value="">
       <Provider store={store}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <div className="w-full relative">
+          <div
+            className="w-full relative h-screen grid grid-cols-1"
+            style={{ gridTemplateRows: '4.4rem 1fr 180px' }}
+          >
             <Header />
             <Component {...props} />
             <Footer />
