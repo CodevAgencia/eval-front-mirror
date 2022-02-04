@@ -1,10 +1,11 @@
+import { useContext } from 'react';
 import Logo from '../../images/Logo-v2.png';
-import useLogin from '../../hooks/useLogin';
+import AppContext from '../../AppContext';
 
 const Header = () => {
-  const { isLoggedIn } = useLogin();
+  const { isAtuhorized } = useContext(AppContext);
   // console.log(isLoggedIn);
-  if (!isLoggedIn) return null;
+  if (!isAtuhorized) return null;
 
   return (
     <div className="w-full h-44 flex items-center sticky bg-white z-10 top-0 py-4 border-b-2 border-cyan-400">

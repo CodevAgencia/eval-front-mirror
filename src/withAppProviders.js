@@ -8,6 +8,7 @@ import store from './store';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import AppMessage from './components/AppMessage';
+import jwtService from './services/jwtService';
 
 const theme = createTheme({
   palette: {
@@ -18,8 +19,10 @@ const theme = createTheme({
 });
 
 const withAppProviders = (Component) => (props) => {
+  const isAtuhorized = jwtService.getAccessToken();
+
   const WrapperComponent = () => (
-    <AppContext.Provider value="">
+    <AppContext.Provider value={{ isAtuhorized }}>
       <Provider store={store}>
         {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
         <MuiThemeProvider theme={theme}>

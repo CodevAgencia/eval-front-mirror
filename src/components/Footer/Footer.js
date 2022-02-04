@@ -1,9 +1,10 @@
-import useLogin from '../../hooks/useLogin';
+import { useContext } from 'react';
+import AppContext from '../../AppContext';
 
 const Footer = () => {
-  const { isLoggedIn } = useLogin();
+  const { isAtuhorized } = useContext(AppContext);
 
-  if (!isLoggedIn) return null;
+  if (!isAtuhorized) return null;
 
   return (
     <div className="w-full text-white" style={{ height: '180px' }}>
