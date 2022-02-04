@@ -5,6 +5,8 @@ const useLogin = () => {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const token = jwtService.getAccessToken();
 
+  console.log(token);
+
   useEffect(() => {
     if (token) {
       setIsLoggedIn(true);
@@ -12,7 +14,7 @@ const useLogin = () => {
       setIsLoggedIn(false);
     }
     // console.log({ token });
-  });
+  }, [token]);
 
   return { isLoggedIn };
 };

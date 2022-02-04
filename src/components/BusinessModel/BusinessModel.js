@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { QuestionsBusinessModel } from '../../fake-data/ideaBusnessQuestionsData';
+import { QuestionsBusinessModel } from '../../fake-data/ideaBusinessQuestionsData';
 import SharedAutoComplete from '../../shared-components/SharedAutoComplete';
 import { ValueProposal as DataAutoComplete } from '../../fake-data/fakeDataAutocompletes';
 

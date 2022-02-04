@@ -126,7 +126,7 @@ export const PreviousSituationQuestions = [
     identifierQuestion: 'S_1',
     title: 'Inversión Previa',
     subtitle: '¿La Compañía ha levantado fondos de capital previamente?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'Si' },
       { id: 2, value: 'No' },
@@ -145,7 +145,7 @@ export const PreviousSituationQuestions = [
     identifierQuestion: 'S_3',
     title: 'Alistamiento para el Mercado',
     subtitle: '¿El Producto Mínimo Viable (MVP) está listo para ser lanzado al mercado?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'Si' },
       { id: 2, value: 'No' },
@@ -159,7 +159,7 @@ export const DataAccuracyQuestions = [
     identifierQuestion: 'VD_1',
     title: 'Los datos son veraces',
     subtitle: '¿Los datos registrados son veraces y reflejan la realidad de la compañía?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'Si' },
       { id: 2, value: 'No' },

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ValueProposal as DataAutoComplete } from '../../fake-data/fakeDataAutocompletes';
 import SharedAutoComplete from '../../shared-components/SharedAutoComplete';
-import { QuestionsValueProposal } from '../../fake-data/ideaBusnessQuestionsData';
+import { QuestionsValueProposal } from '../../fake-data/ideaBusinessQuestionsData';
 
 const initialData = { question1: '' };
 

@@ -12,6 +12,7 @@ const get = async (url, responseType) => {
     responseType,
   })
     .then((res) => {
+      console.log('res', res);
       const { code } = res;
 
       if (res && responseType === 'arraybuffer') {

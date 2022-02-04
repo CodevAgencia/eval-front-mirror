@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const Axios = axios.create({
-  baseURL: process.env.REACT_APP_TENDER_API,
+  baseURL: process.env.REACT_APP_EMPRENDEDOR_API,
   headers: {
     Accept: 'application/json',
   },

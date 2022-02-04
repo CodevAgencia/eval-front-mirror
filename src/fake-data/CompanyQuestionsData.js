@@ -6,7 +6,7 @@ export const FinancingQuestions = [
     title: 'El Flujo de Caja está alineado con la estrategia de escalabilidad',
     subtitle:
       '¿Considera que el presupuesto está en línea con la estrategia de escalabilidad de su negocio?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'No' },
       { id: 2, value: 'Si' },

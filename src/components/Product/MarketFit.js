@@ -58,7 +58,7 @@ const MarketFit = () => {
                   </div>
                 ) : (
                   <SharedAutoComplete
-                    id={question.idInput}
+                    id={question.id}
                     Data={question.values}
                     placeLabel={question.title}
                     keyData={question.identifierQuestion}

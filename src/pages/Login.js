@@ -2,36 +2,21 @@ import { IconButton, InputAdornment, TextField } from '@mui/material';
 import { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
 import useForm from '../hooks/useForm';
 import { validacionLogin } from '../utils/validations/loginValidates';
-import jwtService from '../services/jwtService';
 import Logo from '../images/Logo-v2.png';
-import SharedTextField from '../shared-components/SharedTextField';
-import SharedAutoComplete from '../shared-components';
-import SharedDatePicker from '../shared-components/SharedDatePicker';
+import { submitLogin } from '../auth/store/loginSlice';
+import { showMessage } from '../store/app/messageSlice';
 
 const initialData = {
   email: '',
   password: '',
 };
 
-const typeQuestion = {
-  Text: (args) => {
-    console.log(args);
-    return <SharedTextField {...args} />;
-  },
-  Lista: (args) => {
-    console.log(args);
-    return <SharedAutoComplete {...args} />;
-  },
-  Fecha: (args) => {
-    console.log(args);
-    return <SharedDatePicker {...args} />;
-  },
-};
-
 const Login = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
   const [data, setData] = useState(initialData);
@@ -52,16 +37,17 @@ const Login = () => {
 
   const handleSubmitLogin = () => {
     console.log(form);
-    jwtService.setSession('token');
-    history.push('/general');
-    history.go(0);
-  };
-
-  const hangleChangeGeneral = (event, value, keyData) => {
-    setData({
-      ...data,
-      [keyData]: value?.label ? value?.label : value?.value,
-    });
+    dispatch(submitLogin(form));
+    dispatch(
+      showMessage({
+        message: 'Login exitoso',
+        variant: 'success',
+      })
+    );
+    // submitLogin(form)
+    // jwtService.setSession('token');
+    // history.push('/general');
+    // history.go(0);
   };
 
   return (
@@ -88,41 +74,6 @@ const Login = () => {
             className="w-full"
             placeholder="email..."
             onChange={handleChange}
-          />
-        </div>
-
-        <div className="w-full">
-          <TextField
-            id="identifi-id"
-            label="tests"
-            // error={!!errors.name}
-            // helperText={errors.name?.message}
-            name="test"
-            size="small"
-            type="text"
-            value=""
-            variant="outlined"
-            className="w-1/2"
-            placeholder="hola mundo"
-            onChange={(event) => {
-              console.log(event.target.value);
-            }}
-          />
-          <TextField
-            id="identifi-id"
-            label="tests"
-            // error={!!errors.name}
-            // helperText={errors.name?.message}
-            name="test"
-            size="small"
-            type="text"
-            value=""
-            variant="outlined"
-            className="w-1/2"
-            placeholder="hola mundo"
-            onChange={(event) => {
-              console.log(event.target.value);
-            }}
           />
         </div>
 

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import withAppProviders from './withAppProviders';
 import useLogin from './hooks/useLogin';
 import GeneralData from './pages/GeneralData';
@@ -8,15 +8,16 @@ import IdeaBusinessModel from './pages/IdeaBusinessModel';
 import ProductMarket from './pages/ProductMarket';
 import Market from './pages/Market';
 import Login from './pages/Login';
+import history from './@history';
 
 function App() {
   const { isLoggedIn } = useLogin();
   return (
     <div
-      className={`mx-auto ${isLoggedIn ? 'mb-8' : 'mb-0'}`}
+      className={`mx-auto ${isLoggedIn ? 'my-8' : 'mb-0'}`}
       style={{ width: isLoggedIn ? '90%' : '100%' }}
     >
-      <Router>
+      <Router history={history}>
         <Switch>
           <Route exact path="/">
             <Login />
@@ -36,9 +37,9 @@ function App() {
           <Route exact path="/market">
             <Market />
           </Route>
-          <Route exact path="/market">
-            <Market />
-          </Route>
+          {/* <Route exact path="/market"> */}
+          {/*  <Market /> */}
+          {/* </Route> */}
           <Route
             path="*"
             render={() => {

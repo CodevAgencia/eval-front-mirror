@@ -1,18 +1,20 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import dialogs from './app/dialogSlice';
-import products from './app/productsSlice';
 import login from './app/loginSlice';
-import alert from './app/alertSlice';
-import user from './app/userSlice';
+import general from './app/generalFormSlice';
+import auth from '../auth/store';
+import app from './app/messageSlice';
+import form from './app/formStructureSlice';
 
 const createReducer = (asyncReducers) => (state, action) => {
   const combinedReducer = combineReducers({
+    auth,
+    app,
     ...asyncReducers,
     dialogs,
-    products,
     login,
-    alert,
-    user,
+    general,
+    form,
   });
   return combinedReducer(state, action);
 };

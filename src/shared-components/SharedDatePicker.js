@@ -1,33 +1,18 @@
-import { KeyboardDatePicker } from '@material-ui/pickers';
+import { TextField } from '@mui/material';
+import { MobileDatePicker } from '@mui/lab';
 
 const SharedDatePicker = ({ value, label, keyData, handle }) => {
   return (
-    <KeyboardDatePicker
-      // autoOk
-      // variant="inline"
-      // inputVariant="outlined"
-      // label={label}
-      // format="dd/MM/yyyy"
-      // value={value}
-      // InputAdornmentProps={{ position: 'start' }}
-      // onChange={(date) => handle(date, keyData)}
-      // // className="w-full sm:w-1/2"
-      // className="w-full"
-
-      className="mb-8 mr-8"
-      format="dd/MM/yyyy"
-      id="fechaInicio"
-      inputVariant="outlined"
-      KeyboardButtonProps={{
-        'aria-label': 'change date',
-      }}
-      label="Fecha inicio"
-      size="small"
-      value={value || ''}
-      autoOk
-      disableToolbar
-      fullWidth
-      onChange={handle}
+    <MobileDatePicker
+      label={label}
+      inputFormat="dd/MM/yyyy"
+      value={value}
+      // onChange={(event) => {
+      //   // console.log(format(event, 'dd/MM/yyyy'));
+      //   handle('', format(event, 'dd/MM/yyyy'), keyData);
+      // }}
+      onChange={(date) => handle(date, keyData)}
+      renderInput={(params) => <TextField size="small" className="w-full" {...params} />}
     />
   );
 };

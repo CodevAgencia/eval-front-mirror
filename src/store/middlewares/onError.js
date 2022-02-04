@@ -31,7 +31,7 @@ const rejected =
       }
 
       if (isObject(action?.payload) && Object.keys(action?.payload).length > 0) {
-        console.log('Ha ocurrido un error al guardar.: ');
+        console.log('Ha ocurrido un error..');
         // dispatch(
         //   showMessage({
         //     message: 'Ha ocurrido un error al guardar.',

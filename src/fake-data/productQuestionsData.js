@@ -5,7 +5,7 @@ export const MarketFitQuestions = [
     identifierQuestion: 'PMF_1',
     title: 'Pruebas y Validación con Clientes reales',
     subtitle: '¿El Producto ha sido validado con potenciales clientes, usuarios o partners?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'Si' },
       { id: 2, value: 'No' },
@@ -16,7 +16,7 @@ export const MarketFitQuestions = [
     identifierQuestion: 'PMF_2',
     title: 'Nivel de Deseabilidad',
     subtitle: '¿Los experimentos de Deseabilidad han probado las hipotesis?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'Si' },
       { id: 2, value: 'No' },
@@ -27,7 +27,7 @@ export const MarketFitQuestions = [
     identifierQuestion: 'PMF_3',
     title: 'Nivel de Fabricabilidad',
     subtitle: '¿Los experimentos de Fabricabilidad han probado las hipotesis?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'Si' },
       { id: 2, value: 'No' },
@@ -39,7 +39,7 @@ export const MarketFitQuestions = [
     title: 'Nivel de Viabilidad',
     subtitle:
       '¿Los experimentos de Viabilidad financiera han probado las hipotesis de rentabilidad del modelo de negocio?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'Si' },
       { id: 2, value: 'No' },
@@ -48,7 +48,7 @@ export const MarketFitQuestions = [
   {
     id: 5,
     identifierQuestion: 'PMF_5',
-    title: 'Product- Market Fit es sobresaliente',
+    title: 'Product - Market Fit es sobresaliente',
     subtitle: '¿Cómo Cataloga el Nivel de Product-Market Fit ',
     type: 'Lista',
     values: [
@@ -65,7 +65,7 @@ export const PerformanceProductQuestions = [
     identifierQuestion: 'DPP_1',
     title: 'Experiencias similares en el mercado',
     subtitle: '¿Compañías similares han demostrado buen desempeño?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'Si' },
       { id: 2, value: 'No' },
@@ -87,7 +87,7 @@ export const DisruptiveTechnologyQuestions = [
     identifierQuestion: 'TD_1',
     title: 'Tecnología Exponencial',
     subtitle: '¿Cuenta con una tecnologia Exponencial?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'Si' },
       { id: 2, value: 'No' },
@@ -98,7 +98,7 @@ export const DisruptiveTechnologyQuestions = [
     identifierQuestion: 'TD_2',
     title: 'Incorporación de tecnología',
     subtitle: '¿Esta tecnología exponencial es parte esencial de modelo de negocio?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'Si' },
       { id: 2, value: 'No' },
@@ -109,7 +109,7 @@ export const DisruptiveTechnologyQuestions = [
     identifierQuestion: 'TD_3',
     title: 'Referentes de uso de esta tecnología',
     subtitle: '¿Esta tecnología exponencial se ha usado en negocios similares exitosos?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'Si' },
       { id: 2, value: 'No' },
@@ -120,7 +120,7 @@ export const DisruptiveTechnologyQuestions = [
     identifierQuestion: 'TD_4',
     title: 'Casos de Experiencia Similar',
     subtitle: 'Relacione el nombre de las empresas identificadas',
-    type: 'Booleano',
+    type: 'Lista',
     values: [],
   },
 ];

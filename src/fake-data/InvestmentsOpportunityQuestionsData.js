@@ -22,7 +22,7 @@ export const CompanyValuationQuestions = [
   {
     id: 1,
     identifierQuestion: 'VC_1',
-    title: 'RValoración de la Compañía',
+    title: 'Valoración de la Compañía',
     subtitle: '¿Cuánto es la valoración de su compañía?',
     type: 'Text',
     values: [],
@@ -35,7 +35,7 @@ export const TradingConditionsQuestions = [
     identifierQuestion: 'CN_1',
     title: 'Valoración Justificada según Desempeño',
     subtitle: '¿El Desempeño de la Compañía justifica la valoración?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'No' },
       { id: 2, value: 'Si' },
@@ -46,7 +46,7 @@ export const TradingConditionsQuestions = [
     identifierQuestion: 'CN_2',
     title: 'Valoración Justificada según el equipo emprendedor',
     subtitle: '¿La capacidad de los emprendedores justifica la valoración?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'No' },
       { id: 2, value: 'Si' },
@@ -57,7 +57,7 @@ export const TradingConditionsQuestions = [
     identifierQuestion: 'CN_3',
     title: 'Valoración Justificada según Potencial de Mercado',
     subtitle: '¿El potencial de mercado y de escalamiento justifican la valoración?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'No' },
       { id: 2, value: 'Si' },
@@ -68,7 +68,7 @@ export const TradingConditionsQuestions = [
     identifierQuestion: 'CN_4',
     title: 'Nota Convertible o Acciones',
     subtitle: '¿La inversión sería una Nota Convertible en Acciones?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'No' },
       { id: 2, value: 'Si' },
@@ -79,7 +79,7 @@ export const TradingConditionsQuestions = [
     identifierQuestion: 'CN_5',
     title: 'Otorgaría Participación',
     subtitle: '¿La inversión permitiría obtener Participación en la empresa directamente?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'No' },
       { id: 2, value: 'Si' },
@@ -90,7 +90,7 @@ export const TradingConditionsQuestions = [
     identifierQuestion: 'CN_6',
     title: 'Preferencia acerca del Fondo',
     subtitle: '¿Preferiría que el Fondo tuviera participación accionaria u otros activos?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'No' },
       { id: 2, value: 'Si' },
@@ -101,7 +101,7 @@ export const TradingConditionsQuestions = [
     identifierQuestion: 'CN_7',
     title: 'Disposición a Negociar',
     subtitle: '¿Estaría dispuesto a negociar los terminos de la inversión?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'No' },
       { id: 2, value: 'Si' },
@@ -115,7 +115,7 @@ export const PotentialToAddValueQuestions = [
     identifierQuestion: 'PAV_1',
     title: 'Red de Mentoría',
     subtitle: '¿La compañía tiene una fuerte red de mentores y apoyos?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'No' },
       { id: 2, value: 'Si' },
@@ -126,7 +126,7 @@ export const PotentialToAddValueQuestions = [
     identifierQuestion: 'PAV_2',
     title: 'Conocimiento estratégico',
     subtitle: '¿Cuenta con conocimiento estratégico y apoyo de mentores?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'No' },
       { id: 2, value: 'Si' },
@@ -137,7 +137,7 @@ export const PotentialToAddValueQuestions = [
     identifierQuestion: 'PAV_3',
     title: 'Intención de Expansión',
     subtitle: '¿Tiene intención de expandirse regionalmente?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'No' },
       { id: 2, value: 'Si' },
@@ -148,7 +148,7 @@ export const PotentialToAddValueQuestions = [
     identifierQuestion: 'PAV_4',
     title: 'Gobierno Corporativo',
     subtitle: '¿Estaría dispuesto a implementar prácticas de gobierno corporativo?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'No' },
       { id: 2, value: 'Si' },

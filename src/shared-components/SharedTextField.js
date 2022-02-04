@@ -1,19 +1,21 @@
 import { TextField } from '@mui/material';
 
-const SharedTextField = ({ id, label, name, value, handle, errors }) => {
+const SharedTextField = ({ id, label, name, value, keyData, handle, errors }) => {
   return (
     <TextField
-      id={id.toString()}
+      id={id}
       label={label}
-      error={!!errors.name}
-      helperText={errors.name?.message}
+      error={!!errors?.name}
+      helperText={errors?.name?.message}
       name={name}
       type="text"
       value={value}
       variant="outlined"
       className="w-full"
       placeholder={label}
-      onChange={handle}
+      onChange={(event) => {
+        handle(event, event.target.value, keyData);
+      }}
       size="small"
     />
   );

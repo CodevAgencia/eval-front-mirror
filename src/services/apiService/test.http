@@ -1,0 +1,4 @@
+GET http://eval-api-dev.us-east-1.elasticbeanstalk.com/api/thematic
+Accept: application/json
+
+###

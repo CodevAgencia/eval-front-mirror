@@ -192,7 +192,7 @@ export const LengthMarketQuestions = [
   },
   {
     id: 3,
-    identifierQuestion: 'TARGET 1',
+    identifierQuestion: 'TARGET_1',
     title: 'Target Market Año 1',
     subtitle: 'Mercado Objetivo ¿Cuántos serán mis clientes más probables en el Año 1?',
     type: 'Text',
@@ -200,7 +200,7 @@ export const LengthMarketQuestions = [
   },
   {
     id: 4,
-    identifierQuestion: 'TARGET 2',
+    identifierQuestion: 'TARGET_2',
     title: 'Target Market Año 2',
     subtitle: 'Mercado Objetivo ¿Cuántos serán mis clientes más probables en el Año 2?',
     type: 'Text',
@@ -208,7 +208,7 @@ export const LengthMarketQuestions = [
   },
   {
     id: 5,
-    identifierQuestion: 'TARGET 3',
+    identifierQuestion: 'TARGET_3',
     title: 'Target Market Año 3',
     subtitle: 'Mercado Objetivo ¿Cuántos serán mis clientes más probables en el Año 3?',
     type: 'Text',
@@ -230,7 +230,7 @@ export const EntryBarriersQuestions = [
     identifierQuestion: 'BER_1',
     title: 'Existencia de Barreras de Entrada en el Mercado',
     subtitle: '¿Existen Barreras de Entrada en este mercado?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'Si' },
       { id: 2, value: 'No' },
@@ -241,7 +241,7 @@ export const EntryBarriersQuestions = [
     identifierQuestion: 'BER_2',
     title: 'Favorabilidad de la Regulación en este mercado',
     subtitle: '¿Existe una Regulación favorable en esta industria para su Modelo de Negocio?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'Si' },
       { id: 2, value: 'No' },
@@ -269,7 +269,7 @@ export const ExpansionPlanQuestions = [
     identifierQuestion: 'PEXP_1',
     title: 'Plan de Expansión Regional',
     subtitle: '¿Hay un plan de expansión Regional?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'Si' },
       { id: 2, value: 'No' },
@@ -291,7 +291,7 @@ export const LocalRegionalCompetitorsQuestions = [
     identifierQuestion: 'COMP_1',
     title: 'Existencia de Competidores Locales',
     subtitle: '¿Existen Competidores Locales?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'No' },
       { id: 2, value: 'Si' },
@@ -302,7 +302,7 @@ export const LocalRegionalCompetitorsQuestions = [
     identifierQuestion: 'COMP_2',
     title: 'Existencia de Competidores Regionales',
     subtitle: '¿Existen competidores regionales?',
-    type: 'Booleano',
+    type: 'Lista',
     values: [
       { id: 1, value: 'No' },
       { id: 2, value: 'Si' },

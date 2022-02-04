@@ -63,20 +63,19 @@ class JwtService extends FuseUtils.EventEmitter {
       const data = {
         email,
         password,
-        rol: isAdmin ? 'Administrador' : 'Administrador comercio',
       };
       axios
-        .post(`${process.env.REACT_APP_TENDER_API}/api/v1/auth/admin`, data, {
+        .post(`${process.env.REACT_APP_EMPRENDEDOR_API}/api/auth`, data, {
           headers: {
             'Content-Type': 'application/json',
-            // 'Content-Type': 'multipart/form-data',
           },
         })
         .then((response) => {
-          console.log('DATA LOG', response.data);
+          console.log('response', response);
+          const decoded = jwtDecode(response.data.token);
+          console.log('decoded', decoded);
           if (!response.data.code) {
-            this.setSession(response.data.access_token);
-            // this.signInWithToken().then((r) => console.log('asd'));
+            this.setSession(response.data.token);
             resolve(response.data);
           } else {
             // eslint-disable-next-line prefer-promise-reject-errors
@@ -89,7 +88,7 @@ class JwtService extends FuseUtils.EventEmitter {
   signInWithToken = () => {
     return new Promise((resolve, reject) => {
       axios
-        .get(`${process.env.REACT_APP_TENDER_API}/api/v1/auth/me?include=commerce`, {
+        .get(`${process.env.REACT_APP_EMPRENDEDOR_API}/api/auth/me`, {
           headers: {
             Authorization: `Bearer ${this.getAccessToken()}`,
           },

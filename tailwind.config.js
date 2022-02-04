@@ -8,6 +8,17 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
+    extend: {
+      colors: {
+        primary: {
+          light: '#EAEDF6',
+          main: '#3041C7',
+          dark: '#000320',
+          accent: '#0f30ab',
+          'contrast-text': '#ffffff',
+        },
+      },
+    },
     screens: {
       sm: '600px',
       md: '960px',

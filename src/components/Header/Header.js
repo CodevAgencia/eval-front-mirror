@@ -3,7 +3,7 @@ import useLogin from '../../hooks/useLogin';
 
 const Header = () => {
   const { isLoggedIn } = useLogin();
-
+  // console.log(isLoggedIn);
   if (!isLoggedIn) return null;
 
   return (
