@@ -1,0 +1,1 @@
+export const LIST_COMPONENTS = ['TEXT', 'NUMBER', 'LIST', 'BOOLEAN', 'DATE', 'DOUBLE'];

@@ -1,49 +1,32 @@
-import { configureStore } from '@reduxjs/toolkit';
-import createReducer from './rootReducer';
-import onError from './middlewares/onError';
+import logger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
+import { createBrowserHistory } from 'history';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { routerMiddleware } from 'connected-react-router';
 
-if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept('./rootReducer', () => {
-    const newRootReducer = require('./rootReducer').default;
-    store.replaceReducer(newRootReducer.createReducer());
-  });
-}
+import { mySagas } from './effects';
+import { createRootReducer } from './reducers';
 
-const middlewares = [];
+const sagaMiddleware = createSagaMiddleware();
 
-if (process.env.NODE_ENV === 'development') {
-  const { createLogger } = require(`redux-logger`);
-  const logger = createLogger({ collapsed: (getState, action, logEntry) => !logEntry.error });
+export const history = createBrowserHistory();
 
-  middlewares.push(onError);
-}
-
-const store = configureStore({
-  reducer: createReducer(),
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      immutableCheck: false,
-      serializableCheck: {
-        ignoredActions: [
-          'dialogs/openDialog',
-          'dialogs/closeDialog',
-          'message/showMessage',
-          'message/hideMessage',
-        ],
-      },
-    }).concat(middlewares),
-  devTools: process.env.NODE_ENV === 'development',
-});
-
-store.asyncReducers = {};
-
-export const injectReducer = (key, reducer) => {
-  if (store.asyncReducers[key]) {
-    return false;
-  }
-  store.asyncReducers[key] = reducer;
-  store.replaceReducer(createReducer(store.asyncReducers));
-  return store;
+export const runSagas = () => {
+  sagaMiddleware.run(mySagas);
 };
 
-export default store;
+export const configureStore = (preloadedState) => {
+  const store = createStore(
+    createRootReducer(history), // root reducer with router state
+    preloadedState,
+    compose(
+      applyMiddleware(
+        routerMiddleware(history), // for dispatching history actions
+        sagaMiddleware,
+        logger
+      )
+    )
+  );
+
+  return store;
+};

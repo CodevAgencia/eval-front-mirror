@@ -1,12 +1,9 @@
-import { useContext } from 'react';
-import AppContext from '../../AppContext';
+import { useAuth } from '../../hooks';
 
 const Footer = () => {
-  const { isAtuhorized } = useContext(AppContext);
+  const { loggedIn } = useAuth();
 
-  if (!isAtuhorized) return null;
-
-  return (
+  return loggedIn ? (
     <div className="w-full text-white" style={{ height: '180px' }}>
       <div className="w-full" style={{ height: '100px' }}>
         <svg
@@ -28,7 +25,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default Footer;
