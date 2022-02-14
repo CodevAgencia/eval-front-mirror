@@ -34,6 +34,7 @@ const FormPage = () => {
       control,
       errors: {},
     }));
+  console.log(questionsOfRender);
 
   return loading ? (
     <SharedCircularProgress />
@@ -51,7 +52,7 @@ const FormPage = () => {
                   key={question.id}
                 >
                   <div className="w-full flex items-end" style={{ minHeight: '38px' }}>
-                    <h4 className="w-full text-8 xl:text-12 font-bold">{question.subtitle}</h4>
+                    <h4 className="w-full text-8 xl:text-12 font-bold">{question.question}</h4>
                   </div>
                   {factory.create(question)}
                 </div>
