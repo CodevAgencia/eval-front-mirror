@@ -19,12 +19,13 @@ const FormPage = () => {
     defaultValues[quest.name] = questions[quest.response];
   });
   // eslint-disable-next-line no-unused-vars
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     defaultValues,
   });
 
   const handleOnSubmit = (data) => {
     saveResponses(data);
+    reset();
   };
 
   const questionsOfRender = questions
