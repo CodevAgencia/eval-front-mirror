@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { useEffect, Suspense, lazy } from 'react';
 import { ConnectedRouter as Router } from 'connected-react-router';
 
@@ -39,9 +39,9 @@ function App() {
                   <Login />
                 </Route>
                 <Route exact path="/resultados" component={Results} />
-                {/* <Route> */}
-                {/*  <Redirect to="/" /> */}
-                {/* </Route> */}
+                <Route>
+                  <Redirect to="/" />
+                </Route>
               </>
             )}
           </Switch>
