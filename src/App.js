@@ -1,4 +1,4 @@
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { useEffect, Suspense, lazy } from 'react';
 import { ConnectedRouter as Router } from 'connected-react-router';
 
@@ -10,6 +10,7 @@ import { WithAppProviders } from './withAppProviders';
 const Login = lazy(() => import('./pages/Login'));
 const TeamPage = lazy(() => import('./pages/Team'));
 const FormPage = lazy(() => import('./pages/FormPage'));
+const Results = lazy(() => import('./pages/Results'));
 
 function App() {
   const { loggedIn, loadTokenSave } = useAuth();
@@ -37,9 +38,10 @@ function App() {
                 <Route exact path="/">
                   <Login />
                 </Route>
-                <Route>
-                  <Redirect to="/" />
-                </Route>
+                <Route exact path="/resultados" component={Results} />
+                {/* <Route> */}
+                {/*  <Redirect to="/" /> */}
+                {/* </Route> */}
               </>
             )}
           </Switch>
