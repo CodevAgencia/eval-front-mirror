@@ -5,7 +5,7 @@ export const partnerService = {
     const response = await partnerRepository.getPartners(userId);
     return response.data;
   },
-  async savePartners({ userId, partners }) {
-    return partnerRepository.savePatners(userId, partners);
+  async savePartners({ userId, parthers }) {
+    return partnerRepository.savePatners(userId, parthers);
   },
 };

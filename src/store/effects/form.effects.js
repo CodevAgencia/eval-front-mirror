@@ -8,8 +8,9 @@ import {
   TYPE_REQUEST_FINISH,
   LOAD_THEMATICS_FORM_SUCCESS,
 } from '../../common/actions';
-import { SUCCESS_MESSAGE, ERROR_MESSAGE, GROUPS_FORM } from '../../common';
+import { setItem } from '../../services/localStorage.service';
 import { FormService } from '../../services/formStructureService';
+import { SUCCESS_MESSAGE, TOKEN_KEY_STORAGE, ERROR_MESSAGE, GROUPS_FORM } from '../../common';
 
 export function* getDataFormGroup(action) {
   try {
@@ -40,6 +41,7 @@ export function* saveResponses(action) {
   try {
     yield put({ type: TYPE_REQUEST_FETCH });
     yield call(FormService.saveResponses, action.payload);
+    setItem(TOKEN_KEY_STORAGE, action.payload.newStatus);
     yield put({ type: SET_STATUS_FORM, payload: action.payload.newStatus });
     yield put({
       type: APP_SHOW_MESSAGE,

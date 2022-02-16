@@ -1,60 +1,60 @@
-import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import Chip from '@mui/material/Chip';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
-import { useApp, useQuestions } from '../hooks';
-import { Factory } from '../common/Factory/Factory';
+import { useApp, usePartnert } from '../hooks';
 import SharedCircularProgress from '../shared-components/SharedCircularProgress';
 
 const TeamPage = () => {
-  const factory = new Factory();
   const { loading } = useApp();
-  const { questions } = useQuestions();
-  const defaultValues = {};
-  questions.forEach((quest) => {
-    defaultValues[quest.name] = questions[quest.response];
-  });
   // eslint-disable-next-line no-unused-vars
-  const { control, handleSubmit } = useForm({
-    defaultValues,
-  });
+  const { savePartners } = usePartnert();
+  const [currentPartners, setCurrentPartners] = useState();
 
-  const handleOnSubmit = (data) => {
-    console.log(data);
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+    savePartners(currentPartners);
   };
-
-  const questionsOfRender = questions.map((q) => ({
-    ...q,
-    control,
-    errors: {},
-  }));
 
   return loading ? (
     <SharedCircularProgress />
   ) : (
     <div className="w-full flex flex-col justify-center space-y-12">
-      <form className="flex flex-col" onSubmit={handleSubmit(handleOnSubmit)}>
-        <h1 className="font-bold">Business Model</h1>
+      <form className="w-full flex flex-col" onSubmit={handleOnSubmit}>
+        <h1 className="font-bold">Ingresa los miembros de tu equipo seguido de la tecla Enter</h1>
         <div className="w-full flex flex-col items-center space-y-12 my-8">
-          <div className="w-full flex flex-wrap">
-            {questionsOfRender.length > 0 &&
-              questionsOfRender?.map((question) => (
-                <div
-                  className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 p-8 space-y-8 flex flex-col justify-around"
-                  style={{ minHeight: '160px' }}
-                  key={question.id}
-                >
-                  <div className="w-full flex items-end" style={{ minHeight: '38px' }}>
-                    <h4 className="w-full text-8 xl:text-12 font-bold">{question.subtitle}</h4>
-                  </div>
-                  {factory.create(question)}
-                </div>
-              ))}
-          </div>
+          <Autocomplete
+            multiple
+            id="partners-input"
+            options={[]}
+            defaultValue={[]}
+            freeSolo
+            value={currentPartners}
+            onChange={(event, newValue) => {
+              setCurrentPartners(newValue);
+            }}
+            style={{ width: '90%' }}
+            renderTags={(value, getTagProps) =>
+              value.map((option, index) => (
+                <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+              ))
+            }
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="filled"
+                label="Miembros de tu equipo"
+                placeholder="..."
+              />
+            )}
+          />
         </div>
         <button
           type="submit"
           className="w-full bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded"
         >
-          Ver
+          Siguiente
         </button>
       </form>
     </div>
