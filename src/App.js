@@ -8,13 +8,15 @@ import SplashScreen from './components/SplashScreen';
 import { WithAppProviders } from './withAppProviders';
 
 const Login = lazy(() => import('./pages/Login'));
+const TeamPage = lazy(() => import('./pages/Team'));
 const FormPage = lazy(() => import('./pages/FormPage'));
 
 function App() {
-  const { loggedIn } = useAuth();
+  const { loggedIn, loadTokenSave } = useAuth();
 
   useEffect(() => {
     runSagas();
+    loadTokenSave();
   }, []);
 
   return (
@@ -27,6 +29,7 @@ function App() {
           <Switch>
             {loggedIn ? (
               <>
+                <Route exact path="/equipo" component={TeamPage} />
                 <Route exact={false} path="/formulario/:groupName" component={FormPage} />
               </>
             ) : (
