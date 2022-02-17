@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import jwtDecode from 'jwt-decode';
 import { push } from 'connected-react-router';
 import { call, put } from 'redux-saga/effects';
@@ -37,7 +38,15 @@ export function* sigInRequest(action) {
     });
     const { status } = user;
     yield put({ type: LOAD_PARTNERS, payload: { userId: user.id } });
-    yield put(push(Number(status) === 0 ? '/equipo' : `/formulario/${GROUPS_FORM[status]}`));
+    yield put(
+      push(
+        Number(status) === 0
+          ? '/equipo'
+          : Number(status) === 8
+          ? '/resultados'
+          : `/formulario/${GROUPS_FORM[status]}`
+      )
+    );
   } catch (error) {
     yield put({
       type: APP_SHOW_MESSAGE,
@@ -67,7 +76,15 @@ export function* sigInRequestWithToken(action) {
 
     const status = getItem(STATUS_CURRENT) ?? user.status;
     yield put({ type: LOAD_PARTNERS, payload: { userId: user.id } });
-    yield put(push(Number(status) === 0 ? '/equipo' : `/formulario/${GROUPS_FORM[status]}`));
+    yield put(
+      push(
+        Number(status) === 0
+          ? '/equipo'
+          : Number(status) === 8
+          ? '/resultados'
+          : `/formulario/${GROUPS_FORM[status]}`
+      )
+    );
   } catch (error) {
     yield put({
       type: APP_SHOW_MESSAGE,

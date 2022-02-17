@@ -10,7 +10,7 @@ import {
 } from '../../common/actions';
 import { setItem } from '../../services/localStorage.service';
 import { FormService } from '../../services/formStructureService';
-import { SUCCESS_MESSAGE, TOKEN_KEY_STORAGE, ERROR_MESSAGE, GROUPS_FORM } from '../../common';
+import { SUCCESS_MESSAGE, STATUS_CURRENT, ERROR_MESSAGE, GROUPS_FORM } from '../../common';
 
 export function* getDataFormGroup(action) {
   try {
@@ -41,7 +41,7 @@ export function* saveResponses(action) {
   try {
     yield put({ type: TYPE_REQUEST_FETCH });
     yield call(FormService.saveResponses, action.payload);
-    setItem(TOKEN_KEY_STORAGE, action.payload.newStatus);
+    setItem(STATUS_CURRENT, action.payload.newStatus);
     yield put({ type: SET_STATUS_FORM, payload: action.payload.newStatus });
     yield put({
       type: APP_SHOW_MESSAGE,
@@ -50,7 +50,11 @@ export function* saveResponses(action) {
         type: SUCCESS_MESSAGE,
       },
     });
-    yield put(push(`/formulario/${GROUPS_FORM[action.payload.newStatus]}`));
+    if (action.payload.newStatus === 8) {
+      yield put(push('/resultados'));
+    } else {
+      yield put(push(`/formulario/${GROUPS_FORM[action.payload.newStatus]}`));
+    }
   } catch (error) {
     yield put({
       type: APP_SHOW_MESSAGE,

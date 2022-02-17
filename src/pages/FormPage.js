@@ -1,17 +1,23 @@
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 
-import { useApp, useQuestions } from '../hooks';
-import { GROUPS_FORM, LIST_COMPONENTS } from '../common/constants';
+import { Question } from '../components/Question';
 import { Factory } from '../common/Factory/Factory';
+import { useApp, usePartnert, useQuestions } from '../hooks';
+import { GROUPS_FORM, LIST_COMPONENTS } from '../common/constants';
+import { TeamQuestionSection } from '../components/TeamQuestionSection';
 import SharedCircularProgress from '../shared-components/SharedCircularProgress';
+
+const isTableSimple = (type) => type.slice(0, 10) === 'TABLE_TEAM';
 
 const FormPage = () => {
   const factory = new Factory();
   const { loading } = useApp();
+  const { partners } = usePartnert();
   const { groupName } = useParams();
 
   const groupId = GROUPS_FORM.findIndex((v) => v === groupName);
+  // eslint-disable-next-line no-unused-vars
   const { questions, saveResponses } = useQuestions(groupId);
   const defaultValues = {};
 
@@ -24,7 +30,20 @@ const FormPage = () => {
   });
 
   const handleOnSubmit = (data) => {
-    saveResponses(data);
+    const parsed = {};
+    Object.keys(data).forEach((key) => {
+      const p = key.indexOf(':');
+      if (p > 0) {
+        parsed[key.slice(0, p)] = {
+          ...parsed[key.slice(0, p)],
+          [key.slice(p + 1)]: data[key],
+        };
+        parsed[key.slice(0, p)] = JSON.stringify(parsed[key.slice(0, p)]);
+      } else {
+        parsed[key] = data[key];
+      }
+    });
+    saveResponses(parsed);
     reset();
   };
 
@@ -35,7 +54,6 @@ const FormPage = () => {
       control,
       errors: {},
     }));
-  console.log(questionsOfRender);
 
   return loading ? (
     <SharedCircularProgress />
@@ -46,18 +64,26 @@ const FormPage = () => {
         <div className="w-full flex flex-col items-center space-y-12 my-8">
           <div className="w-full flex flex-wrap">
             {questionsOfRender.length > 0 &&
-              questionsOfRender?.map((question) => (
-                <div
-                  className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 p-8 space-y-8 flex flex-col justify-around"
-                  style={{ minHeight: '160px' }}
-                  key={question.id}
-                >
-                  <div className="w-full flex items-end" style={{ minHeight: '38px' }}>
-                    <h4 className="w-full text-8 xl:text-12 font-bold">{question.question}</h4>
-                  </div>
-                  {factory.create(question)}
-                </div>
-              ))}
+              questionsOfRender?.map((question) =>
+                !isTableSimple(question.type) ? (
+                  <Question id={question.id} question={question.question}>
+                    {factory.create(question)}
+                  </Question>
+                ) : (
+                  <TeamQuestionSection id={question.id} question={question.question}>
+                    {partners.map((p) => (
+                      <Question question={p.name} id={`${question.code}:${p.id}`}>
+                        {factory.create({
+                          ...question,
+                          code: `${question.code}:${p.id}`,
+                          question: p.name,
+                          type: question.type.slice(11),
+                        })}
+                      </Question>
+                    ))}
+                  </TeamQuestionSection>
+                )
+              )}
           </div>
         </div>
         <button

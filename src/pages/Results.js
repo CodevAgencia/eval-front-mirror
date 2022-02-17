@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Table, TableBody, TableCell, TableRow, Typography } from '@material-ui/core';
-import { useApp } from '../hooks';
+import { useApp, useAuth } from '../hooks';
 import SharedCircularProgress from '../shared-components/SharedCircularProgress';
 import TableHeadResults from '../components/Table/TableHeadResults';
 import { dataRowLevels } from '../utils/dataTableHeadResults';
@@ -8,6 +8,7 @@ import { dataResultTable, dataTotalTable } from '../utils/fakeDataResults';
 
 const Results = () => {
   const { loading } = useApp();
+  const { logout } = useAuth();
   // eslint-disable-next-line no-unused-vars
   const [results, setResultsTable] = useState(dataResultTable);
   // eslint-disable-next-line no-unused-vars
@@ -178,6 +179,13 @@ const Results = () => {
           ))}
         </TableBody>
       </Table>
+      <button
+        type="button"
+        onClick={logout}
+        className="w-full bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded"
+      >
+        Salir
+      </button>
     </div>
   );
 };

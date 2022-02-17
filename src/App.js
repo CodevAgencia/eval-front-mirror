@@ -32,13 +32,13 @@ function App() {
               <>
                 <Route exact path="/equipo" component={TeamPage} />
                 <Route exact={false} path="/formulario/:groupName" component={FormPage} />
+                <Route exact path="/resultados" component={Results} />
               </>
             ) : (
               <>
                 <Route exact path="/">
                   <Login />
                 </Route>
-                <Route exact path="/resultados" component={Results} />
                 <Route>
                   <Redirect to="/" />
                 </Route>

@@ -19,7 +19,7 @@ export const usePartnert = () => {
   };
 
   return {
-    partners,
+    partners: partners?.partners,
     savePartners,
   };
 };

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { TOKEN_KEY_STORAGE } from '../common/constants';
-import { getItem } from '../services/localStorage.service';
+import { getItem, removeItem } from '../services/localStorage.service';
+import { TOKEN_KEY_STORAGE, STATUS_CURRENT } from '../common/constants';
 import { TYPE_AUTH_REQUEST, TYPE_AUTH_REQUEST_WITH_TOKEN } from '../common/actions';
 
 export const useAuth = () => {
@@ -30,8 +30,15 @@ export const useAuth = () => {
     });
   };
 
+  const logout = () => {
+    removeItem(TOKEN_KEY_STORAGE);
+    removeItem(STATUS_CURRENT);
+    window.location.replace('/');
+  };
+
   return {
     user,
+    logout,
     loggedIn,
     signInRequest,
     loadTokenSave,
