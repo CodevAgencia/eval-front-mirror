@@ -16,6 +16,7 @@ export class InputTextFactory {
         subtitle={item.criterion}
         title={item.question}
         value={item.value}
+        defaultValue={item.defaultValue}
       />
     );
   }

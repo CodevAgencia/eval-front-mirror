@@ -17,6 +17,7 @@ export class InputNumberFactory {
         title={item.question}
         value={item.value}
         type="number"
+        defaultValue={item.defaultValue}
       />
     );
   }

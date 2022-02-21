@@ -1,4 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router';
 import { useParams } from 'react-router-dom';
 
 import { Question } from '../components/Question';
@@ -15,6 +18,7 @@ const FormPage = () => {
   const { loading } = useApp();
   const { partners } = usePartnert();
   const { groupName } = useParams();
+  const { push } = useHistory();
 
   const groupId = GROUPS_FORM.findIndex((v) => v === groupName);
   // eslint-disable-next-line no-unused-vars
@@ -22,12 +26,20 @@ const FormPage = () => {
   const defaultValues = {};
 
   questions.forEach((quest) => {
-    defaultValues[quest.name] = questions[quest.response];
+    defaultValues[quest.code] = quest?.response?.value ?? null;
   });
-  // eslint-disable-next-line no-unused-vars
+
   const { control, handleSubmit, reset } = useForm({
     defaultValues,
   });
+
+  useEffect(reset, []);
+
+  const goBack = () => {
+    if (groupId > 1) {
+      push(`/formulario/${GROUPS_FORM[groupId - 1]}`);
+    }
+  };
 
   const handleOnSubmit = (data) => {
     const parsed = {};
@@ -53,6 +65,7 @@ const FormPage = () => {
       ...q,
       control,
       errors: {},
+      defaultValue: defaultValues[q.code],
     }));
 
   return loading ? (
@@ -78,6 +91,7 @@ const FormPage = () => {
                           code: `${question.code}:${p.id}`,
                           question: p.name,
                           type: question.type.slice(11),
+
                         })}
                       </Question>
                     ))}
@@ -86,12 +100,25 @@ const FormPage = () => {
               )}
           </div>
         </div>
-        <button
-          type="submit"
-          className="w-full bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded"
-        >
-          Continuar
-        </button>
+        <div className="flex flex-row-reverse">
+          <button
+            type="submit"
+            className="w-full bg-cyan-400 hover:bg-cyan-600 text-white font-bold mx-4 py-2 px-4 rounded"
+          >
+            Continuar
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              goBack();
+            }}
+            disabled={groupId <= 1}
+            type="button"
+            className="w-full variant:outlined bg-blue-50 hover:bg-cyan-600 hover:text-white text-cyan-400 font-bold mx-4 py-2 px-4 rounded"
+          >
+            Atras
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -6,6 +6,11 @@ export class InputTeamBooleanFactory {
   }
 
   create(item) {
+    // eslint-disable-next-line no-console
+    console.log(
+      '🚀 ~ file: Factory.js ~ line 9 ~ InputTeamBooleanFactory ~ create ~ item',
+      JSON.stringify(item)
+    );
     return (
       <InputList
         key={item.name}

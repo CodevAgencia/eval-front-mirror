@@ -16,6 +16,7 @@ export class InputDoubleFactory {
         subtitle={item.criterion}
         title={item.question}
         value={item.value}
+        defaultValue={item.defaultValue}
         type="number"
       />
     );

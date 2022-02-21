@@ -18,6 +18,7 @@ export class InputListFactory {
         type={item.type}
         value={item.value}
         options={item.values}
+        defaultValue={item.defaultValue}
       />
     );
   }

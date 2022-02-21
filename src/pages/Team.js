@@ -9,7 +9,7 @@ import SharedCircularProgress from '../shared-components/SharedCircularProgress'
 const TeamPage = () => {
   const { loading } = useApp();
   // eslint-disable-next-line no-unused-vars
-  const { savePartners } = usePartnert();
+  const { partners, savePartners } = usePartnert();
   const [currentPartners, setCurrentPartners] = useState();
 
   const handleOnSubmit = (event) => {
@@ -28,7 +28,7 @@ const TeamPage = () => {
             multiple
             id="partners-input"
             options={[]}
-            defaultValue={[]}
+            defaultValue={partners.map((p) => p.name)}
             freeSolo
             value={currentPartners}
             onChange={(event, newValue) => {

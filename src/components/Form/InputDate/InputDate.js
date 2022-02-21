@@ -3,11 +3,13 @@ import { TextField } from '@mui/material';
 import { MobileDatePicker } from '@mui/lab';
 import { Controller } from 'react-hook-form';
 
-export const InputDate = ({ id, name, title, control }) => {
+export const InputDate = ({ id, name, title, control, defaultValue }) => {
   return (
     <Controller
       name={name}
       control={control}
+      shouldUnregister
+      defaultValue={defaultValue}
       render={({ field }) => (
         <MobileDatePicker
           {...field}
@@ -30,11 +32,16 @@ export const InputDate = ({ id, name, title, control }) => {
 };
 
 InputDate.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
   errors: PropTypes.any,
   control: PropTypes.any,
+  value: PropTypes.string,
+  defaultValue: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+};
+
+InputDate.defaultProps = {
+  defaultValue: new Date().toString(),
 };
