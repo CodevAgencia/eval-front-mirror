@@ -6,6 +6,16 @@ export class InputBooleanFactory {
   }
 
   create(item) {
+    let defaultValue = null;
+
+    if (item?.isQuestionTeam) {
+      const p = item.code.indexOf(':');
+      const id = item.code.slice(p + 1);
+      defaultValue = JSON.parse(item.defaultValue)[id];
+    } else {
+      defaultValue = item.defaultValue;
+    }
+
     return (
       <InputList
         key={item.name}
@@ -16,7 +26,7 @@ export class InputBooleanFactory {
         subtitle={item.criterion}
         title={item.question}
         type={item.type}
-        defaultValue={item.defaultValue}
+        defaultValue={defaultValue}
         value={item.value}
         options={['Si', 'No']}
       />

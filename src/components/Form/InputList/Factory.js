@@ -6,6 +6,16 @@ export class InputListFactory {
   }
 
   create(item) {
+    let defaultValue = null;
+
+    if (item?.isQuestionTeam) {
+      const p = item.code.indexOf(':');
+      const id = item.code.slice(p + 1);
+      defaultValue = JSON.parse(item.defaultValue)[id];
+    } else {
+      defaultValue = item.defaultValue;
+    }
+
     return (
       <InputList
         key={item.name}
@@ -18,7 +28,7 @@ export class InputListFactory {
         type={item.type}
         value={item.value}
         options={item.values}
-        defaultValue={item.defaultValue}
+        defaultValue={defaultValue}
       />
     );
   }

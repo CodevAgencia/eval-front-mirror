@@ -43,19 +43,35 @@ const FormPage = () => {
 
   const handleOnSubmit = (data) => {
     const parsed = {};
+    const result = {};
+
     Object.keys(data).forEach((key) => {
       const p = key.indexOf(':');
       if (p > 0) {
-        parsed[key.slice(0, p)] = {
-          ...parsed[key.slice(0, p)],
-          [key.slice(p + 1)]: data[key],
-        };
-        parsed[key.slice(0, p)] = JSON.stringify(parsed[key.slice(0, p)]);
+        if (parsed[key.slice(0, p)]) {
+          parsed[key.slice(0, p)] = {
+            ...parsed[key.slice(0, p)],
+            [key.slice(p + 1)]: data[key],
+          };
+        } else {
+          parsed[key.slice(0, p)] = {
+            [key.slice(p + 1)]: data[key],
+          };
+        }
       } else {
         parsed[key] = data[key];
       }
     });
-    saveResponses(parsed);
+
+    Object.keys(parsed).forEach((key) => {
+      if (typeof parsed[key] === 'object') {
+        result[key] = JSON.stringify(parsed[key]);
+        return;
+      }
+      result[key] = parsed[key];
+    });
+
+    saveResponses(result);
     reset();
   };
 
@@ -91,7 +107,7 @@ const FormPage = () => {
                           code: `${question.code}:${p.id}`,
                           question: p.name,
                           type: question.type.slice(11),
-
+                          isQuestionTeam: true,
                         })}
                       </Question>
                     ))}
