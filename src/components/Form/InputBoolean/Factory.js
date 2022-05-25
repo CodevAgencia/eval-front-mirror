@@ -8,7 +8,7 @@ export class InputBooleanFactory {
   create(item) {
     let defaultValue = null;
 
-    if (item?.isQuestionTeam) {
+    if (item?.isQuestionTeam && item.defaultValue) {
       const p = item.code.indexOf(':');
       const id = item.code.slice(p + 1);
       defaultValue = JSON.parse(item.defaultValue)[id];
