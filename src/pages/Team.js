@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -11,6 +11,10 @@ const TeamPage = () => {
   // eslint-disable-next-line no-unused-vars
   const { partners, savePartners } = usePartnert([]);
   const [currentPartners, setCurrentPartners] = useState();
+
+  useEffect(() => {
+    setCurrentPartners(partners?.map((partner) => partner.name));
+  }, [partners]);
 
   const handleOnSubmit = (event) => {
     event.preventDefault();

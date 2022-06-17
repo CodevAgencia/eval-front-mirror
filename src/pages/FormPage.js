@@ -38,6 +38,8 @@ const FormPage = () => {
   const goBack = () => {
     if (groupId > 1) {
       push(`/formulario/${GROUPS_FORM[groupId - 1]}`);
+    } else {
+      push('/equipo');
     }
   };
 
@@ -128,7 +130,7 @@ const FormPage = () => {
               e.preventDefault();
               goBack();
             }}
-            disabled={groupId <= 1}
+            disabled={groupId <= 0}
             type="button"
             className="w-full variant:outlined bg-blue-50 hover:bg-cyan-600 hover:text-white text-cyan-400 font-bold mx-4 py-2 px-4 rounded"
           >
