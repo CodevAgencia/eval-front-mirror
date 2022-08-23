@@ -48,7 +48,7 @@ const TeamPage = () => {
               <TextField
                 {...params}
                 variant="filled"
-                label="Miembros de tu equipo"
+                label="Nombre personas del equipo"
                 placeholder="..."
               />
             )}
