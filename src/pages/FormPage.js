@@ -47,6 +47,7 @@ const FormPage = () => {
     const parsed = {};
     const result = {};
 
+    // Sorry Brow
     Object.keys(data).forEach((key) => {
       const p = key.indexOf(':');
       if (p > 0) {
@@ -66,6 +67,10 @@ const FormPage = () => {
     });
 
     Object.keys(parsed).forEach((key) => {
+      if (Object.prototype.toString.call(parsed[key]) === '[object Date]') {
+        result[key] = parsed[key];
+        return;
+      }
       if (typeof parsed[key] === 'object') {
         result[key] = JSON.stringify(parsed[key]);
         return;

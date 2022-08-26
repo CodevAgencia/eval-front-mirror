@@ -16,6 +16,7 @@ export class InputDateFactory {
         subtitle={item.criterion}
         title={item.question}
         type={item.type}
+        defaultValue={item.defaultValue}
         value={item.value}
       />
     );
